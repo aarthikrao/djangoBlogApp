@@ -1,7 +1,7 @@
 '''
     1. Create tables for diffrent types of categories..!
     2. Change Names of fields
-    3. 
+    3. Add List of categories..!
 '''
 from django.db import models
 
