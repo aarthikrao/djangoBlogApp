@@ -6,7 +6,8 @@ from . import views
 app_name = 'mainapp'
 
 urlpatterns = [
-    path(r'<title_name>/', views.index, name='index'),
-    path(r'author/', views.render_about, name='render_about'),
-    path(r'feed/<title_name>/', views.render_with_title, name='render_with_title')
+    path(r'article/<title_name>/', views.article, name='article'),
+    path(r'author/<author_name>/', views.about_author, name='render_about'),
+    path(r'feed/<title_name>/', views.homepage, name='homepage'),
+    path('category/<category>',views.list_post_by_category,name='category')
 ]

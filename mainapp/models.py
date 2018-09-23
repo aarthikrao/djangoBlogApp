@@ -4,6 +4,7 @@
     3. Add List of categories..!
 '''
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 
 
 class Author(models.Model):
@@ -14,9 +15,10 @@ class Author(models.Model):
     github_link = models.CharField(max_length=150)
     twitter_link = models.CharField(max_length=150)
     fb_link = models.CharField(max_length=150)
-    
+
     def __str__(self):
         return self.blog_name
+
 
 class PageContent(models.Model):
     title = models.CharField(max_length=150)
@@ -25,7 +27,15 @@ class PageContent(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     pub_date = models.DateTimeField('Date Published')
     content = models.TextField()
+    tags = models.TextField()
 
     def __str__(self):
         return self.title
 
+
+class Tags(models.Model):
+    name = models.CharField(max_length=20)
+    int_name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name

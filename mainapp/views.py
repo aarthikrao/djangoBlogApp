@@ -1,33 +1,42 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import PageContent
+from .models import PageContent, Tags
+
+header_list = Tags.objects.all()
 
 
-def index(request, title_name):
-    return HttpResponse(title_name)
+def article(request, title_name):
+    list_of_posts = PageContent.objects.filter(link_name=title_name)
+    # render_objects = {
+    #     "header_list": header_list,
+    #     "post_list": list_of_posts
+    # }
+    return HttpResponse(list_of_posts)
 
 
-def render_with_title(request, title_name):
-    header_list = {
-        "Entertainment": "entertainment",
-        "Tech": "tech",
-        "Sports": "sports",
-        "Fashion": "fashion",
-        "Football": "football",
-        "Luxury": "luxury",
-        "Coding": "Coding",
-        "LifeStyle": "lifestyle",
-        "Food": "food",
-        "Travel": "travel",
-        "Litrature": "litrature"
-    }
-
+def homepage(request, title_name):
     list_of_posts = PageContent.objects.all()
-    render_objects = {"header_list": header_list,
-                      "post_list": list_of_posts
-                      }
+    render_objects = {
+        "header_list": header_list,
+        "post_list": list_of_posts
+    }
     return render(request, 'index_base.html', render_objects)
 
 
-def render_about(request, title_name):
-    return render(request, 'about.html')
+def about_author(request, author_name):
+    list_of_posts = PageContent.objects.all()
+    render_objects = {
+        "header_list": header_list,
+        "post_list": list_of_posts
+    }
+    return render(request, 'about.html',render_objects)
+
+
+def list_post_by_category(request,category):
+    list_of_posts = PageContent.objects.filter(tags__icontains=category)
+    render_objects = {
+        "header_list": header_list,
+        "post_list": list_of_posts
+    }
+    return render(request, 'index_base.html', render_objects)
+    
