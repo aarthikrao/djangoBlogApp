@@ -46,9 +46,10 @@
 
                 .title {
                     color: black;
-                    font-size: 13px;
+                    font-size: 15px;
                     text-align: center;
-                    font-family: 'Courier New', Courier, monospace
+                    font-family: 'Times New Roman', Times, serif;
+                    font-style: italic;
                 }
 
 
@@ -67,17 +68,15 @@
             <!-- <h2 style="text-align:center">Author</h2> -->
             <img src="http://www.safelinetruckinsurance.com/wp-content/uploads/2014/12/testiIcon.png" alt="John" style="width:300px"
                 height="300px">
-            <h1 style="color: black;">John Doe</h1>
+            <h1 style="color: black;font-style: italic;">{{ authorinfo.full_name }}</h1>
             <div class="col-sm-11 col-sm-offset-1">
-                <h6 class="title">CEO & Founder, Example ihs gdf gsdfg sdf gdsf gsdfg sdfdg sdfg sdfg sddfg
-                    sddfffffffffffffff gsddf
-                    gsdf gdsf g</h6>
+                <h6 class="title"> {{ authorinfo.blog_name}}</h6>
             </div>
             <div style="margin: 24px 0;">
-                <a class="sociallinks" href="#"><i class="fa fa-dribbble"></i></a>
-                <a class="sociallinks" href="#"><i class="fa fa-twitter"></i></a>
-                <a class="sociallinks" href="#"><i class="fa fa-linkedin"></i></a>
-                <a class="sociallinks" href="#"><i class="fa fa-facebook"></i></a>
+                <a class="sociallinks" href="{{ authorinfo.email_link }}"><i class="fa fa-dribbble"></i></a>
+                <a class="sociallinks" href="{{ authorinfo.twitter_link }}"><i class="fa fa-twitter"></i></a>
+                <a class="sociallinks" href="{{ authorinfo.github_link }}"><i class="fa fa-linkedin"></i></a>
+                <a class="sociallinks" href="{{ authorinfo.fb_link }}"><i class="fa fa-facebook"></i></a>
             </div>
             <hr>
         </div>
@@ -85,6 +84,7 @@
     </div>
     <div class="col-sm-9" style="background-color:white;">
         <div class="col-lg-11 col-lg-offset-1 col-sm-11 col-sm-offset-1">
+            <h3 >Posts By Author : </h3>
             {% for posts in post_list %}
             <div class="post-preview">
                 <a href="{% url 'mainapp:article' posts.link_name %}">

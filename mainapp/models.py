@@ -9,6 +9,7 @@ from django.contrib.postgres.fields import ArrayField
 
 class Author(models.Model):
     blog_name = models.CharField(max_length=50)
+    desc = models.CharField(max_length=400)
     full_name = models.CharField(max_length=30)
     photoLink = models.CharField(max_length=150)
     email_link = models.EmailField()
@@ -22,6 +23,7 @@ class Author(models.Model):
 
 class PageContent(models.Model):
     title = models.CharField(max_length=150)
+    desc = models.CharField(max_length=200)
     link_name = models.CharField(max_length=150)
     image_link = models.CharField(max_length=150)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
