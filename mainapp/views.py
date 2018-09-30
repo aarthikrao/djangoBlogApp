@@ -15,7 +15,7 @@ def article(request, title_name):
     return render(request, 'post.html', render_objects)
 
 
-def homepage(request, title_name):
+def homepage(request):
     list_of_posts = PageContent.objects.all()
     render_objects = {
         "header_list": header_list,
