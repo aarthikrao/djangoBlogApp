@@ -92,7 +92,7 @@
                         {{ posts.title }}
                     </h2>
                     <h3 class="post-subtitle">
-                        {{ posts.content|slice:":200" }} ...
+                        {{ posts.desc|slice:":200" }} ...
                     </h3>
                 </a>
                 <p class="post-meta">Posted by <a href="#">{{ posts.author.full_name }}</a> on {{posts.pub_date}}</p>
