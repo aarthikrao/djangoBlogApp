@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf.urls import handler400, handler404, handler500
 
+handler400 = 'mainapp.error_views.bad_request'
+handler404 = 'mainapp.error_views.bad_request'
+handler500 = 'mainapp.error_views.bad_request'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('mainapp.urls',namespace='mainapp'))
+    path('', include('mainapp.urls', namespace='mainapp'))
 ]
